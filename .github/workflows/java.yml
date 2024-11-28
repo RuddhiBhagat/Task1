@@ -29,7 +29,7 @@ jobs:
         javac -version
 
     - name: Compile Java code
-      run: javac hello_world.java
+      run: javac hello_world.java  # Compile hello_world.java
 
     - name: Run Java code with secret key
       run: |
@@ -37,4 +37,4 @@ jobs:
         java hello_world ${{ secrets.MY_SECRET_KEY }}  # Pass secret as command-line argument
 
     - name: Run HelloWorld Java program
-      run: java HelloWorld
+      run: java hello_world  # Run the Java program
