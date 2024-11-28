@@ -20,14 +20,14 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3  # Set up Java
       with:
-        java-version: '17'  # You can use any version (e.g., 11, 8, etc.)
+        java-version: '17'  # Specify the Java version you want (e.g., 8, 11, 17)
+        distribution: 'adoptopenjdk'  # Use AdoptOpenJDK (or another distribution like OpenJDK)
 
     - name: Compile Java code
-      run: javac hello_world.java  # Compile the hello_world.java file
+      run: javac hello_world.java  # Compile the HelloWorld.java file
 
     - name: Run Java code
       run: java hello_world  # Run the compiled Java program
 
     - name: Access secret key
       run: echo "The secret key is ${{ secrets.MY_SECRET_KEY }}"  # Access and print the secret key (for debugging purposes)
-
