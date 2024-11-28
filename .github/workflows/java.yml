@@ -4,37 +4,37 @@ name: Java Hello World Workflow
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - main
   pull_request:
     branches:
-      - main  # Trigger on pull requests targeting the main branch
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2  # Checkout your repository code
+      uses: actions/checkout@v2
 
     - name: Set up JDK
-      uses: actions/setup-java@v3  # Set up Java
+      uses: actions/setup-java@v3
       with:
-        java-version: '17'  # Specify the Java version you want (e.g., 8, 11, 17)
-        distribution: 'temurin'  # Use AdoptOpenJDK (or other distros like temurin)
+        java-version: '17'
+        distribution: 'temurin'
 
     - name: Verify Java installation
       run: |
-        java -version  # Print the installed Java version
-        javac -version  # Print the installed Java compiler version
+        java -version
+        javac -version
 
     - name: Compile Java code
-      run: javac hello_world.java  # Compile the HelloWorld.java file
+      run: javac hello_world.java
 
-    - name: Run Java code
-      run: java hello_world  # Run the compiled Java program
+    - name: Run Java code with secret key
+      run: |
+        echo "Running Java program with secret key"
+        java hello_world ${{ secrets.MY_SECRET_KEY }}  # Pass secret as command-line argument
 
-    - name: Print secret key for debugging (only temporarily)
-      run: echo "The secret key is ${{ secrets.MY_SECRET_KEY }}"  # Access and print the secret key (for debugging purposes)
-      env:
-        MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
+    - name: Run HelloWorld Java program
+      run: java HelloWorld
