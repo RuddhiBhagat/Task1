@@ -28,5 +28,5 @@ jobs:
         # You can add other dependencies here if needed
         # e.g., pip install -r requirements.txt
 
-    - name: Run hello.py
-      run: python hello.py  # Run the Python script
+    - name: Run hello_world.py
+      run: python hello_world.py  # Run the Python script
