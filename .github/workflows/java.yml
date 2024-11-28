@@ -21,7 +21,12 @@ jobs:
       uses: actions/setup-java@v3  # Set up Java
       with:
         java-version: '17'  # Specify the Java version you want (e.g., 8, 11, 17)
-        distribution: 'adoptopenjdk'  # Use AdoptOpenJDK (or another distribution like OpenJDK)
+        distribution: 'adoptopenjdk'  # Use AdoptOpenJDK (or other distros like temurin)
+
+    - name: Verify Java installation
+      run: |
+        java -version  # Print the installed Java version
+        javac -version  # Print the installed Java compiler version
 
     - name: Compile Java code
       run: javac hello_world.java  # Compile the HelloWorld.java file
